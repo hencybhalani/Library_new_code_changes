@@ -1,0 +1,70 @@
+<div class="container-fluid ">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100" >
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Return Book</p>
+               
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            
+              <!-- <div  class="collapse" id="booksTable" > -->
+                <div  >
+                <div>
+                  <div class="table-responsive ps-3">
+                    <mat-card-content [formGroup]="returnForm" >
+                        <mat-form-field color="accent" class="category-user">
+                          <mat-label>Select User</mat-label>
+                          <mat-select  #categorySelect  formControlName="userId">
+                              
+                            <mat-option *ngFor="let option of uniqueUserList" [value]="option.id">
+                              {{ option.username }}
+                            </mat-option>
+                                
+                          </mat-select>
+                      </mat-form-field>
+
+                
+                        <mat-form-field color="accent" class="category-book">
+                          <mat-label>Select Book</mat-label>
+                          <mat-select  #categorySelect  formControlName="bookId">
+                              
+                              <mat-option *ngFor="let option of userbookList" [value]="option.BookId">
+                                {{ option['Book'].Title }}
+                              </mat-option>
+                                
+                          </mat-select>
+                      </mat-form-field>
+                      <!-- <div class="fine">
+                        <button class="btn btn-success border-radius-lg" (click)="getFine()">
+                          Get Fine
+                        </button>
+                        <span [ngStyle]="{'display': fineToPay === null ? 'none' : 'flex'}" class="fine-amount">
+                          {{fineToPay}} Rs
+                        </span>
+                      </div> -->
+                      <div class="fine">
+                        <button class="btn btn-success border-radius-lg" (click)="getFine()">
+                          Get Fine
+                        </button>
+                        <span *ngIf="fineToPay !== null" class="fine-amount text-danger text-bold ">
+                          {{fineToPay}} Rs
+                        </span>
+                      </div>
+                        <button  class=" btn btn-primary mt-2 border-radius-lg" (click)="returnBook()">
+                            Return Book
+                        </button>
+                
+                    </mat-card-content>          
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>

@@ -1,0 +1,215 @@
+
+<div class="container-fluid">
+    <div class="row"  *ngFor="let item of dashboard">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+        <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="text-end pt-1">
+        <p class="text-sm mb-0 text-capitalize">Total's Students</p>
+        <h4 class="mb-0">{{ item.totalStudents }}</h4>
+        </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+        <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-book"></i>
+        </div>
+        <div class="text-end pt-1">
+        <p class="text-sm mb-0 text-capitalize">Books Available</p>
+        <h4 class="mb-0">{{ item.totalBooks }}</h4>
+        </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+        <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-bookmark"></i>
+        </div>
+        <div class="text-end pt-1">
+        <p class="text-sm mb-0 text-capitalize">Book Isued</p>
+        <h4 class="mb-0">{{ item.totalBookOrders }}</h4>
+        </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+        <div class="card">
+        <div class="card-header p-3 pt-2">
+        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <div class="text-end pt-1">
+        <p class="text-sm mb-0 text-capitalize">Book Due To Return</p>
+        <h4 class="mb-0">{{ item.totalPendingBooks  }}</h4>
+        </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
+        </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="row " style="margin-top: 1rem;">
+            <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                    <div class="text-start">
+                        <p class="text-m mb-0 text-capitalize font-weight-bold">Fees/Book   Pending</p>
+                    </div>
+                    <div class="text-end">
+                        <p class="text-sm mb-0 text-capitalize text-primary font-weight-bold" (click)="toggleShowAllUsers1()">View All</p>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                          <tr>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">UserName</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Amount</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satuts</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let element of ordersWithPendingReturns; let i = index ">
+                          <tr   *ngIf="showAllUsers1 || i < 2">
+                              <td class=" text-center ">{{ element['user'].username }}</td>
+                              <td class="text-center">{{ element.orderDate | date: "dd-MM-yyyy" }}</td>
+                              <td class="text-center">{{ getFineToPay(element)}}</td>
+                              <td class="text-center" >  <button class="btn btn-sm bg-gradient-warning" >Pending</button></td>
+                            </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-6 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                    <div class="text-start">
+                        <p class="text-m mb-0 text-capitalize font-weight-bold">Student Profile</p>
+                    </div>
+                    <div class="text-end">
+                        <p class="text-sm mb-0 text-capitalize text-primary font-weight-bold" (click)="toggleShowAllUsers()">View All</p>
+                    </div>
+                </div>
+          
+                <div class="card-body px-0 pb-2">
+            
+                    <div class="table-responsive p-0">
+                      <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">UserName</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deaprtment</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CreatedOn</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satuts</th>
+                                
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let element of users; let i = index">
+                                <tr *ngIf="showAllUsers || i < 2">
+                                  <td class="text-center">{{ element.username }}</td>
+                                  <td class="text-center">{{ element.department }}</td>
+                                  <td class="text-center">{{ element.createdOn | date: 'dd-MM-yyyy' }}</td>
+                                  <td class="text-center">
+                                    <button class="btn btn-sm bg-gradient-success">
+                                      {{ getAccountStatus(element.accountStatus) }}
+                                    </button>
+                                  </td>
+                                </tr>
+                              </ng-container>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+            </div>
+            </div>
+            </div>
+
+          
+            
+        <div class="row " style="margin-top: 1rem;">
+            <div class="col-xl-9 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+                <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                    <div class="text-start">
+                        <p class="text-m mb-0 text-capitalize font-weight-bold">Book Issued/Return</p>
+                    </div>
+                    <div class="text-end">
+                        <p class="text-sm mb-0 text-capitalize text-primary font-weight-bold" (click)="toggleShowAllUsers2()">View All</p>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                          <tr>  
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Sr No</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">UserName</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 fixed-width">BookTitle</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satuts</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let element of displayUser; let i = index ">
+                          <tr   *ngIf="showAllUsers2 || i < 3">
+                            <td class=" text-center ">{{i+1 }}</td>
+                              <td class=" text-center ">{{ element['user'].username }}</td>
+                              <td class=" text-center fixed-width ">{{ element['book'].title }}</td>
+                              <td class="text-center">{{ element.orderDate | date: "dd-MM-yyyy" }}</td>
+                              <td class="text-center">
+                                <button class="btn btn-sm" 
+                                        [ngClass]="{'bg-gradient-success': element.returned, 'bg-gradient-warning': !element.returned}">
+                                  {{ element.returned ? 'Complete' : 'Pending' }}
+                                </button>
+                              </td>                           
+                             </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 mb-xl-0" style="height: 15rem;">
+            <div class="card">
+                <div class="card-header p-3 pt-2 d-flex justify-content-between align-items-center">
+                    <div class="text-start">
+                        <p class="text-m mb-0 text-capitalize font-weight-bold">Library Mangement</p>
+                    </div>
+                    
+                </div>
+          
+            </div>
+            </div>
+            </div>
+   </div>

@@ -1,0 +1,133 @@
+
+
+  
+           
+<div class="container-fluid ">
+ <div class="row">
+      <div class="input-group mb-1" style="width: 25rem;">
+         <input type="text" class="form-control ps-2" style="height:2rem;" placeholder="Search Book Here...." >
+        <button class="btn" style="height:2rem;background-color:#19263b ;"><i class="fas fa-search" style="color: white;"></i></button>
+     </div>
+
+   <div class="col-12">
+     <div class="card my-4">
+       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+         <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+           <div class="d-flex justify-content-between align-items-center h-100">
+             <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Pending Returns ({{ pendingReturns.length }})</p>
+             
+           </div>
+         </div>
+       </div>
+       <div class="card-body px-0 pb-2">
+         
+           <div >
+             <div>
+               <div class="table-responsive p-0">
+                @if (pendingReturns.length > 0) {
+
+                 <table class="table align-items-center mb-0">
+                   <thead>
+                     <tr>
+                       <th class=" text-center text-utext-center ppercase text-secondary text-xxs font-weight-bolder opacity-7">Sr No</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 fixed-width">Title</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Author</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fine To Pay</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Payment</th>
+                      
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr  *ngFor="let element of pendingReturns; let i = index">
+                       <td class="text-center">{{ i + 1 }}</td>
+                       <td class="fixed-width text-center ">{{ element.Book.Title }}</td>
+                       <td class=" text-center ">{{ element.Book.Author }}</td>
+                       <td class="text-center">{{ element.OrderDate | date: "dd-MM-yyyy" }}</td>
+                       <td class="text-center text-danger" > {{ getFineToPay(element)}}<i class="fa-solid fa-indian-rupee-sign mb-lg-0"></i></td>
+                       <td class="text-center" ><button class="btn btn-sm bg-gradient-success" [disabled]="getFineToPay(element) === 0" (click)="initiatePayment(getFineToPay(element))">Pay</button></td>
+                     </tr>
+                   </tbody>
+                 </table>
+                }
+                @else {
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class=" border-radius-lg pt-4 pb-3" style="height:4rem;">
+                      
+                        <p class="text-dark text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold"> No Orders Done Yet!</p>
+                    </div>
+                  </div>
+                  }
+               </div>
+             
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+          <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+            <div class="d-flex justify-content-between align-items-center h-100">
+              <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold"> Returns Orderd ({{ completedReturns.length }})</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <div >
+              <div>
+                <div class="table-responsive p-0">
+                 @if (completedReturns.length > 0) {
+ 
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class=" text-center text-utext-center ppercase text-secondary text-xxs font-weight-bolder opacity-7">Sr No</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 fixed-width">Title</th>
+                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Author</th> 
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ReturnDate</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fine Paid</th>
+                       
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let element of completedReturns; let i = index">
+                        <td class="text-center">{{ i + 1 }}</td>
+                        <td class="fixed-width text-center ">{{ element.Book.Title }}</td>
+                        <td class=" text-center ">{{ element.Book.Author }}</td>
+                        <td class="text-center">{{ element.OrderDate | date: "dd-MM-yyyy" }}</td>
+                        <td class="text-center">{{ element.ReturnedDate | date: "dd-MM-yyyy" }}</td>
+                        <td class="text-center">{{ element.FinePaid }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                 }
+                 @else {
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class=" border-radius-lg pt-4 pb-3" style="height:4rem;">
+                      
+                        <p class="text-dark text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold"> No Orders Done Yet!</p>
+                    </div>
+                  </div>
+                   }
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+ 
+
+      
+      
+      

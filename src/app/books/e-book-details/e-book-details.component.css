@@ -1,0 +1,225 @@
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards within the container */
+}
+
+.card-horizontal {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px; /* Adjust margin as needed */
+    border: 1px solid #ccc; /* Optional: Border for clarity */
+    border-radius: 8px; /* Optional: Rounded corners */
+    overflow: hidden; /* Prevents content overflow */
+    max-width: 60rem; /* Adjust the maximum width as needed */
+    width: 100%; /* Ensure the card takes up the full width within the max-width */
+    background-color: #fff; /* Optional: Background color */
+}
+
+.card-horizontal .img-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Adjust this if you want the buttons to be at the bottom */
+    padding: 10px;
+}
+
+.card-horizontal .img-wrapper img {
+    /* Adjust the width of the image */
+    height: 15rem;
+    object-fit: cover; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add some spacing between the image and buttons */
+}
+
+.card-horizontal .button-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card-horizontal .button-group .btn {
+    margin: 5px 0; /* Add some spacing between buttons */
+}
+
+.card-horizontal .card-body {
+    flex: 1;
+    padding: 20px; /* Adjust padding as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+}
+
+/* Style the description to handle long text */
+.card-horizontal .card-body .card-description {
+    max-width: 50rem; /* Set the maximum width for the description */
+    word-wrap: break-word; /* Wrap long words to the next line */
+    overflow-wrap: break-word; /* Ensure the text breaks within the container */
+}
+.card-text-row {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between the items */
+    margin-bottom: 10px;
+    width: 30rem; /* Add spacing below the row */
+}
+
+/* Ensure the text in the row wraps as needed */
+.card-text-row .card-text {
+    margin: 0;
+    flex: 2; /* Allow the items to grow and fill available space */
+}
+
+
+/* Optional: Add some additional styling for the card content */
+.card-horizontal .card-body h5 {
+    margin: 0 0 10px;
+}
+
+.card-horizontal .card-body p {
+    margin: 0;
+    margin-bottom: 10px; /* Add spacing between paragraphs */
+}
+#ptext{
+    width: 10rem;
+}
+
+
+.plan {
+    padding: 10px;
+    background-color:#fff;
+    color: #917072;
+}
+
+.plan .inner {
+    padding: 20px;
+    padding-top: 40px;
+    background-color: #FFEDEC;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan .pricing {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color:  #FBC8BE;
+    border-radius: 99em 0 0 99em;
+    display: flex;
+    align-items: center;
+    padding: .625em .75em;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color:#754D42;
+}
+
+.plan .pricing small {
+    color: #917072;
+    font-size: .75em;
+    margin-left: .25em;
+}
+
+.plan .title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color:  #754D42;
+    margin-top: .75rem;
+}
+
+.plan .info {
+    margin-top: 1rem;
+}
+
+.plan .features {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.25rem;
+}
+
+.plan .features li {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .75rem;
+}
+
+.plan .icon {
+    background-color:  #1FCAC5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.plan .icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.plan button {
+    font: inherit;
+    background-color:#141E30;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.125rem;
+    width: 50%;
+    border: 0;
+    padding: 1em;
+    margin-top: 1.25rem;
+}
+
+.plan button:hover,
+.plan button:focus {
+    background-color:#141E30;
+}
+.blur-background {
+    filter: blur(5px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay .plan {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color:   #754D42;
+    padding: 0;
+    margin-left: 1rem;
+}
+
+.close-btn i {
+    font-size: 1.5rem;
+}
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.5;
+}

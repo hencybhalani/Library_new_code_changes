@@ -1,4 +1,5 @@
 
+
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -6,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { userregister } from '../../_model/user.model';
 import { UserService } from '../../_service/UserService';
 import { ToastrService } from 'ngx-toastr';
+import { SignalRService } from '../../_service/signalR.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +21,7 @@ export class RegisterComponent implements AfterViewInit {
   _loginform: FormGroup;
  _response : any;
  isLoading = false;
-  constructor(private builder: FormBuilder , private service:UserService, private toaster:ToastrService,private router:Router) {
+  constructor(private builder: FormBuilder , private service:UserService, private toaster:ToastrService,private router:Router,private signalr : SignalRService) {
     // Define the form group with validation
     this._regform = this.builder.group({
       username: ['', Validators.required],
@@ -86,30 +88,26 @@ export class RegisterComponent implements AfterViewInit {
   
   login() {
     if (this._loginform.valid) {
-      let _obj1: userregister = {
-        email: this._loginform.value.email as string,
-        password: this._loginform.value.password as string,
-      };
-  
-      this.service.login(_obj1.email, _obj1.password).subscribe({
+      const email = this._loginform.value.email;
+      const password = this._loginform.value.password;  
+
+      this.service.login(email, password).subscribe({
         next: (response: any) => {
-          alert('Done');
-          if (response.message == 'not found') {
-            this.toaster.error('Credential are invalid!','OK');
-            
-          } else if (response.message == 'unapproved') {
-            this.toaster.error('Your Account is not approved by Admin!','OK');
-          }
-          else{
+          if (response.message === 'not found') {
+            this.toaster.error('Credentials are invalid!', 'OK');
+          } else if (response.message === 'unapproved') {
+            this.toaster.error('Your Account is not approved by Admin!', 'OK');
+          } else {
             console.log(response);
-            localStorage.setItem('access_token',response)
+            localStorage.setItem('access_token', response);
             this.service.userStatus.next('loggedIn');
+           this.router.navigateByUrl('/dashboard');
           }
+        },
+        error: (err) => {
+          console.error('Failed to send:', err);
+          this.toaster.error('Failed to send.' + err.message);
         }
-        // error: (err) => {
-        //   console.error('Failed to send:', err);
-        //   this.toaster.error('Failed to send.' + err.message);
-        // }
       });
     } else {
       Object.keys(this._loginform.controls).forEach(field => {

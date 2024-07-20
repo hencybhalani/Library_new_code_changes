@@ -1,0 +1,8 @@
+mat-card-footer {
+    margin-top: 1rem;
+  }
+  .fixed-width {
+    width: 200px; /* Set your desired fixed width */
+    white-space: normal; /* Enable wrapping */
+    word-wrap: break-word; /* Break words if necessary */
+  }

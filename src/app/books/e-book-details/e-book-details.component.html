@@ -1,0 +1,96 @@
+<!-- <div class="container mt-3" [class.blur-background]="showDiv">
+    <div class="book-container">
+        <div class="card card-horizontal" *ngFor="let ebook of Ebooks">
+            <div class="img-wrapper">
+                <img *ngIf="ebook.imageUrl" [src]="ebook.imageUrl" alt="Book Image" class="card-img-top">
+                <div class="button-group">
+                
+             <a *ngIf="isAdmin() || (userType === 1 && ebook.type === 'Free')" (click)="viewDocument(ebook.storedDocument)" class="btn btn-primary">
+                Read Book
+              </a>
+              <a *ngIf="userType === 1 && ebook.type === 'Paid'" class="btn btn-primary disabled-link">
+                Read Book 
+              </a>
+              <a *ngIf="userType === 1 && ebook.type === 'Free'" class="btn btn-success disabled-link">
+                Buy Now
+              </a>
+              <a *ngIf="userType === 1 && ebook.type === 'Paid'" class="btn btn-success" (click)="showError()">
+                Buy Now
+              </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-uppercase">{{ebook.etitle}}</h5>
+                <p class="card-text">Author: {{ebook.eauthor}}</p>
+                <div class="card-text-row">
+                    <p class="card-text" id="ptext">Publisher: {{ebook.epublisher}}</p>
+                    <p class="card-text" id="ptext">Category: {{ebook.eFromCategory}}</p>
+                </div>
+                <p class="card-text card-description">{{ebook.edescription}}</p>
+                
+                <h5 class="text-dark"> <ng-container *ngIf="ebook.type === 'Free'; else notFree">
+                    <del><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{ ebook.eprice }}</del>&nbsp;
+                    <span class="text-success">{{ ebook.type }}</span>
+                  </ng-container>
+                  <ng-template #notFree>
+                    <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{ ebook.eprice }}&nbsp;<span class="text-danger">{{ ebook.type }}</span>
+                  </ng-template></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay" *ngIf="showDiv" >
+    <article class="plan card">
+        <div class="inner" *ngFor="let ebook of Ebooks">
+            
+            <span class="pricing">
+                <span>
+                    {{ ebook.eprice }}<small><i class="fa-solid fa-indian-rupee-sign"></i></small>
+                </span>
+            </span>
+            <h2 class="title">{{ebook.etitle}}</h2>
+            <p class="info">Author: {{ebook.eauthor}}</p>
+            <p class="info">Publisher: {{ebook.epublisher}}</p>
+            <ul class="features">
+                <li>
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span>Buy eBooks for instant access to endless knowledge!</span>
+                </li>
+                <li>
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span>Purchase eBooks and enjoy reading anytime, anywhere!</span>
+                </li>
+                <li>
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z" />
+                            <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <span>Book Download</span>
+                </li>
+            </ul>
+            
+            <div class="button-row">
+                <button class="button" (click)="initiatePayment(ebook.eprice)">
+                    Pay Now
+                </button>
+                <button class="close-btn" (click)="closeArticle()">
+                    Close
+                </button>
+            </div>
+         
+        </div>
+    </article>
+</div> -->

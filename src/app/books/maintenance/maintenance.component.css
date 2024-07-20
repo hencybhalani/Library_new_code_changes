@@ -1,0 +1,25 @@
+mat-card {
+    width: max-content;
+    margin-bottom: 2rem;
+  }
+  
+  mat-form-field {
+    margin-right: 1rem;
+  }
+  
+  .category-select {
+    width: 400px;
+  }
+  
+  .book-title {
+    width: 250px;
+  }
+  
+  .book-author {
+    width: 250px;
+  }
+  
+  .book-price {
+    width: 100px;
+  }
+ 

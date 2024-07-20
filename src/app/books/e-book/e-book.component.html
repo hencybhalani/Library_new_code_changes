@@ -1,0 +1,63 @@
+
+<!-- <div class="container mt-4">
+  <div class="row align-items-center">
+    <div class="col">
+      <div class="input-group mb-1" style="width: 25rem;">
+        <input type="text" class="form-control ps-2" style="height: 2rem;" placeholder="Search Book Here....">
+        <button class="btn" style="background-color: #19263b;">
+          <i class="fas fa-search" style="color: white;"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group mb-2 col-md-11">
+        <select class="form-select" style="border: 1px solid grey;" [(ngModel)]="selectedCategoryId" (change)="filterBooksByCategory()">
+          <option value="selectedCategoryId">Select Category</option>
+          <option *ngFor="let category of booklist" [value]="category.id">
+            {{ category.ecategory }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <div class="ms-auto" *ngIf="userType === 0">
+        <button (click)="openEbookModal()" class="btn" id="button">Add New Ebook</button>
+      </div>
+    </div>
+  </div>
+  <div class="row book-container d-flex flex-wrap">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 book" *ngFor="let ebook of paginatedEbooks">
+      <div class="card">
+        <img *ngIf="ebook.imageUrl" [src]="ebook.imageUrl" alt="Book Image" class="card-img-top">
+        <div class="card-body text-center">
+          <h5 class="card-title text-uppercase text-drak font-weight-bold">{{ebook.etitle}}</h5>
+          <p class="card-text">{{ebook.eauthor}}</p>
+          <p class="card-text">
+            <ng-container *ngIf="ebook.type === 'Free'; else notFree">
+              <del><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{ ebook.eprice }}</del>&nbsp;
+              <span class="text-success">{{ ebook.type }}</span>
+            </ng-container>
+            <ng-template #notFree>
+              <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{ ebook.eprice }}&nbsp;<span class="text-success">{{ ebook.type }}</span>
+            </ng-template>
+          </p>
+          <a (click)="ebookcomponent(ebook.eid)" class="btn btn-primary">More Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)"><</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link text-dark" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)">></a>
+      </li>
+    </ul>
+  </nav>
+</div> -->

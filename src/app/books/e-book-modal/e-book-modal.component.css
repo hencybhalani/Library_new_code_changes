@@ -1,0 +1,33 @@
+
+
+mat-card {
+  width: max-content;
+  margin-bottom: 2rem;
+}
+mat-form-field {
+  margin-right: 1rem;
+}
+.title{
+  width:30rem;
+}
+.author{
+  width:30rem;
+}
+.des{
+  width: 61rem;
+}
+.publisher{
+  width:30rem;
+}
+.price{
+  width:30rem;
+}
+.category{
+  width:30rem;
+}
+.type{
+  width:30rem;
+}
+label{
+  margin-bottom: 0 !important;
+}

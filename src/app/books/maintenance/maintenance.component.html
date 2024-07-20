@@ -1,0 +1,157 @@
+<div class="container-fluid ">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100" >
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Add New Category</p>
+               
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            
+              <!-- <div  class="collapse" id="booksTable" > -->
+                <div  >
+                <div>
+                  <div class="table-responsive ps-3">
+                    <mat-card-content [formGroup]="newCategory" >
+                      <mat-form-field color="accent">
+                          <mat-label>Category</mat-label>
+                          <input matInput formControlName="bCategory">
+                      </mat-form-field>
+              
+                      <mat-form-field color="accent">
+                          <mat-label>SubCategory</mat-label>
+                          <input matInput formControlName="bSubCategory">
+                      </mat-form-field>
+              
+                      <button 
+                              [disabled]="newCategory.invalid"  class="mb-3 btn btn-success border-radius-lg" (click)="addNewCategory()" >
+                          <span>Add</span>
+                      </button>
+                   </mat-card-content>            
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+
+   <div class="container-fluid ">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100" >
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Add New Book</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            
+              <!-- <div  class="collapse" id="booksTable" > -->
+                <div  >
+                <div>
+                  <div class="table-responsive ps-3">
+                   
+                  <mat-card-content [formGroup]="newBook">
+
+                    <mat-form-field color="accent" class="book-title">
+                      <mat-label>Book Title</mat-label>
+                      <input matInput formControlName="title">
+                  </mat-form-field>
+
+                      <mat-form-field color="accent" class="book-author">
+                          <mat-label>Book Author</mat-label>
+                          <input matInput formControlName="author">
+                      </mat-form-field>
+
+                      <mat-form-field color="accent" class="book-price">
+                          <mat-label>Book Price</mat-label>
+                          <input matInput formControlName="price">
+                          <mat-error *ngIf="newBook.get('price')?.hasError('pattern')">
+                          </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field color="accent" class="category-select">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="category" #categorySelect>
+                              
+                              <mat-option *ngFor="let option of categoryList" [value]="option.id">
+                                {{ option.displayValue }}
+                              </mat-option>
+                                
+                          </mat-select>
+                      </mat-form-field>
+
+                        <button (click)="addNewBook()"  [disabled]="newBook.invalid"  class="mb-3 btn btn-success border-radius-lg" >
+                            <span>Add</span>
+                        </button>
+                    </mat-card-content>          
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+
+
+   <div class="container-fluid ">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100" >
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Remove Book</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            
+              <!-- <div  class="collapse" id="booksTable" > -->
+                <div  >
+                <div>
+                  <div class="table-responsive ps-3">
+                    <mat-card-content>
+                      <!-- <mat-form-field color="accent">
+                          <mat-label>Book ID</mat-label>
+                          <input matInput [formControl]="deleteBook">
+                      </mat-form-field> -->
+
+
+                      <mat-form-field color="accent" class="category-select">
+                        <mat-label>Category</mat-label>
+                        <mat-select  #categorySelect  [formControl]="deleteBook">
+                            
+                            <mat-option *ngFor="let option of booklist" [value]="option.id">
+                              {{ option.title }}
+                            </mat-option>
+                              
+                        </mat-select>
+                    </mat-form-field>
+                      <button class="mb-3 btn bg-gradient-danger border-radius-lg" [disabled]="deleteBook.invalid"
+                              (click)="deleteExistingBook()">
+                          <span>Delete</span>
+                      </button>
+                  </mat-card-content>    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+ 
+
+   

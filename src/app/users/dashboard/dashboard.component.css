@@ -1,0 +1,18 @@
+.fixed-width {
+    width: 200px; /* Set your desired fixed width */
+    white-space: normal; /* Enable wrapping */
+    word-wrap: break-word; /* Break words if necessary */
+  }
+  .card-body img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-body p {
+    margin: 0;
+  }
+  
+  .chart-container{
+    width: 100%;
+    height: 400px; 
+  }

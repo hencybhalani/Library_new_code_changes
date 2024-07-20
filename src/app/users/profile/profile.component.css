@@ -1,0 +1,31 @@
+
+
+mat-card {
+  width: 500px;
+
+  mat-card-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color:pink;
+  }
+
+  mat-card-content {
+    table {
+      margin-top: 1rem;
+
+      .mat-column-name {
+        border-right: 1px solid black;
+      }
+
+      .mat-mdc-header-cell,
+      .mat-mdc-cell {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+.custom-input {
+    border: 1px solid black;
+    border-radius: 4px;
+  }

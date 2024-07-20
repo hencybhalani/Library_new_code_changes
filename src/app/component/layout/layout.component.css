@@ -1,30 +1,17 @@
-mat-sidenav-container{
-    height: 100vh;
-    
-    mat-sidenav{
-        width:250px;
-        background: #19263b;
-        color: #ffffff; 
-        border-radius: 0; 
-        position: fixed; /* Fix the sidebar */
-        top: 0;
-        left: 0;
-        height: 100%;
-        z-index: 1000;
-    }
-    mat-sidenav-content{
-        display: flex;
-       flex-direction: column;
-       
-       margin-left: 250px;   
-    }
-    main{
-        margin-top: 64px;
-        flex: 1 1 auto;
-        overflow-y: auto;
-    }
-}
-.main-content {
-    padding: 1rem;
-/* Same value as the header height */
-}
+
+  /* .container-fluid{
+margin-top: 7rem;
+  }
+  
+  .main-content {
+    position: relative; /* Ensure stacking context for z-index to work */
+    /* Ensure main content is above the side nav */
+     /* Adjust top margin to clear the fixed navbar */
+  
+  
+  .container-fluid {
+    position: relative; /* Ensure stacking context for z-index to work */
+    z-index: 0; /* Ensure content is behind the main content */
+  }   
+  
+ 

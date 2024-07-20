@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between mb-1" style="width: 100%;">
+            <div class="input-group" style="width: 25rem;">
+              <input type="text" class="form-control ps-2" style="height:2rem;" placeholder="Search Book Here....">
+              <button class="btn" style="height:2rem;background-color:#19263b;"><i class="fas fa-search" style="color: white;"></i></button>
+            </div>
+          </div>
+         
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100">
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Orders With Pending Returns({{ordersWithPendingReturns.length}})</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            <div class="d-flex align-items-center ps-3">
+                <button class="btn btn-primary" style="height:3rem;" (click)="SendEmailtoUser()">Send Email About Pending Returns</button>
+                <button class="btn btn-primary " style="height:3rem;margin-left:1rem;" (click)="Blockeduser()">Block Overdue User</button>
+              </div>
+              <mat-card-footer>
+                @if (showProgressBar) {
+                  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+                }
+            </mat-card-footer>
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class=" text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrederId</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">UserName</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Email</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 fixed-width">BookId</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fine To Pay</th>
+                      </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <tr  *ngFor="let element of ordersWithPendingReturns; let i = index">
+                        <td class="text-center">{{element.id}}</td>
+                        <td class=" text-center ">{{ element['user'].username }}</td>
+                        <td class="text-center ">{{ element['user'].email }}</td>
+                        <td class="fixed-width text-center ">{{ element['book'].title }}</td>
+                        <td class="text-center">{{ element.orderDate | date: "dd-MM-yyyy" }}</td>
+                        <td class="text-center" >  <button class="btn btn-sm bg-gradient-danger" >{{ getFineToPay(element)}}<i class="fa-solid fa-indian-rupee-sign mb-lg-0"></i></button></td>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+       
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="shadow-dark border-radius-lg pt-4 pb-3" style="background-color:#19263b;height:4rem;">
+              <div class="d-flex justify-content-between align-items-center h-100">
+                <p class="text-white text-capitalize ps-3 mb-0 text-center text-dark font-weight-bold">Orders With Complete Returns({{ordersWithCompletedReturns.length}})</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class=" text-center text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrederId</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">UserName</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Email</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 fixed-width">Book Title</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">OrderDate</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ReturnDate</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fine Paid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let element of ordersWithCompletedReturns; let i = index">
+                     <td class="text-center">{{element.id}}</td>
+                        
+                        <td class="text-center ">{{ element['user'].username }}</td>
+                        <td class="text-center ">{{ element['user'].email }}</td>
+                        <td class="fixed-width text-center ">{{ element['book'].title }}</td>
+                        <td class="text-center">{{ element.orderDate | date: "dd-MM-yyyy" }}</td>
+                        <td class="text-center">{{ element.returnDate | date: "dd-MM-yyyy" }}</td>
+                        <td class="text-center" >  <button class="btn btn-sm bg-gradient-danger" >{{ element.finePaid}}<i class="fa-solid fa-indian-rupee-sign mb-lg-0"></i></button></td>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

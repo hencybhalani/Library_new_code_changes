@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<!-- <mat-sidenav-container>
     <mat-sidenav opened mode="side">
        <app-page-side-nav></app-page-side-nav>
     </mat-sidenav>
@@ -6,7 +6,17 @@
     <app-page-header></app-page-header>
 
        <main class="main-content">
-     <router-outlet name="dashboard"></router-outlet>
+     <router-outlet ></router-outlet>
         </main>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+<div style="margin-left: 17rem;">
+   <app-page-side-nav></app-page-side-nav>
+      <main class="main-content border-radius-lg ps">
+         <app-page-header></app-page-header>
+         <div class="container-fluid py-4  main-scroll" >
+            <router-outlet ></router-outlet>
+         </div>
+      </main>
+    </div>
